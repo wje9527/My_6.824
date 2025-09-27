@@ -1,0 +1,8 @@
+--- wc test: PASS
+--- indexer test: PASS
+--- map parallelism test: PASS
+--- reduce parallelism test: PASS
+--- job count test: PASS
+--- early exit test: PASS
+--- crash test: PASS
+*** PASSED ALL TESTS

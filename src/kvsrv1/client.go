@@ -2,10 +2,9 @@ package kvsrv
 
 import (
 	"6.5840/kvsrv1/rpc"
-	"6.5840/kvtest1"
-	"6.5840/tester1"
+	kvtest "6.5840/kvtest1"
+	tester "6.5840/tester1"
 )
-
 
 type Clerk struct {
 	clnt   *tester.Clnt
@@ -15,6 +14,7 @@ type Clerk struct {
 func MakeClerk(clnt *tester.Clnt, server string) kvtest.IKVClerk {
 	ck := &Clerk{clnt: clnt, server: server}
 	// You may add code here.
+
 	return ck
 }
 
@@ -30,7 +30,19 @@ func MakeClerk(clnt *tester.Clnt, server string) kvtest.IKVClerk {
 // arguments. Additionally, reply must be passed as a pointer.
 func (ck *Clerk) Get(key string) (string, rpc.Tversion, rpc.Err) {
 	// You will have to modify this function.
-	return "", 0, rpc.ErrNoKey
+
+	args := rpc.GetArgs{Key: key}
+	reply := rpc.GetReply{}
+	for {
+		ok := ck.clnt.Call(ck.server, "KVServer.Get", &args, &reply)
+		if ok && (reply.Err == rpc.ErrNoKey || reply.Err == rpc.OK) {
+			// 通信成功且查到值或者错误是nokey才退出重试
+			break
+		}
+	}
+
+	// return "", 0, rpc.ErrNoKey
+	return reply.Value, reply.Version, reply.Err
 }
 
 // Put updates key with value only if the version in the
@@ -52,5 +64,25 @@ func (ck *Clerk) Get(key string) (string, rpc.Tversion, rpc.Err) {
 // arguments. Additionally, reply must be passed as a pointer.
 func (ck *Clerk) Put(key, value string, version rpc.Tversion) rpc.Err {
 	// You will have to modify this function.
-	return rpc.ErrNoKey
+	args := rpc.PutArgs{Key: key, Value: value, Version: version}
+	reply := rpc.PutReply{}
+	first := true
+	for {
+		ok := ck.clnt.Call(ck.server, "KVServer.Put", &args, &reply)
+
+		if ok {
+			// 得到了一个从服务器返回的回复
+			// 判断返回类型
+			if reply.Err == rpc.ErrVersion && first {
+				return rpc.ErrVersion
+			} else if reply.Err == rpc.ErrVersion && !first {
+				return rpc.ErrMaybe
+			}
+			// 其他回复则直接返回给客户端
+			return reply.Err
+		}
+
+		first = false
+	}
+	// return reply.Err
 }

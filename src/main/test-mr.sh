@@ -57,6 +57,10 @@ mkdir mr-tmp || exit 1
 cd mr-tmp || exit 1
 rm -f mr-*
 
+# my edition save the result to the file
+TIMESTAMP=$(date +%Y%m%d-%H%M%S)
+RESULT_FILE="../test-result-${TIMESTAMP}.log"
+
 # make sure software is freshly built.
 (cd ../../mrapps && go clean)
 (cd .. && go clean)
@@ -103,10 +107,10 @@ wait $pid
 sort mr-out* | grep . > mr-wc-all
 if cmp mr-wc-all mr-correct-wc.txt
 then
-  echo '---' wc test: PASS
+  echo '---' wc test: PASS >> $RESULT_FILE
 else
-  echo '---' wc output is not the same as mr-correct-wc.txt
-  echo '---' wc test: FAIL
+  echo '---' wc output is not the same as mr-correct-wc.txt >> $RESULT_FILE
+  echo '---' wc test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
@@ -134,10 +138,10 @@ maybe_quiet $TIMEOUT ../mrworker ../../mrapps/indexer.so
 sort mr-out* | grep . > mr-indexer-all
 if cmp mr-indexer-all mr-correct-indexer.txt
 then
-  echo '---' indexer test: PASS
+  echo '---' indexer test: PASS >> $RESULT_FILE
 else
-  echo '---' indexer output is not the same as mr-correct-indexer.txt
-  echo '---' indexer test: FAIL
+  echo '---' indexer output is not the same as mr-correct-indexer.txt >> $RESULT_FILE
+  echo '---' indexer test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
@@ -157,17 +161,17 @@ maybe_quiet $TIMEOUT ../mrworker ../../mrapps/mtiming.so
 NT=`cat mr-out* | grep '^times-' | wc -l | sed 's/ //g'`
 if [ "$NT" != "2" ]
 then
-  echo '---' saw "$NT" workers rather than 2
-  echo '---' map parallelism test: FAIL
+  echo '---' saw "$NT" workers rather than 2 >> $RESULT_FILE
+  echo '---' map parallelism test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
 if cat mr-out* | grep '^parallel.* 2' > /dev/null
 then
-  echo '---' map parallelism test: PASS
+  echo '---' map parallelism test: PASS >> $RESULT_FILE
 else
-  echo '---' map workers did not run in parallel
-  echo '---' map parallelism test: FAIL
+  echo '---' map workers did not run in parallel >> $RESULT_FILE
+  echo '---' map parallelism test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
@@ -188,11 +192,19 @@ maybe_quiet $TIMEOUT ../mrworker ../../mrapps/rtiming.so
 NT=`cat mr-out* | grep '^[a-z] 2' | wc -l | sed 's/ //g'`
 if [ "$NT" -lt "2" ]
 then
-  echo '---' too few parallel reduces.
-  echo '---' reduce parallelism test: FAIL
+  echo '---' too few parallel reduces. >> $RESULT_FILE
+  echo '---' reduce parallelism test: FAIL >> $RESULT_FILE
   failed_any=1
-else
-  echo '---' reduce parallelism test: PASS
+else--- wc test: PASS
+--- indexer test: PASS
+--- map parallelism test: PASS
+--- reduce parallelism test: PASS
+--- job count test: PASS
+--- early exit test: PASS
+--- crash test: PASS
+*** PASSED ALL TESTS
+
+  echo '---' reduce parallelism test: PASS >> $RESULT_FILE
 fi
 
 wait
@@ -213,10 +225,10 @@ maybe_quiet $TIMEOUT ../mrworker ../../mrapps/jobcount.so
 NT=`cat mr-out* | awk '{print $2}'`
 if [ "$NT" -eq "8" ]
 then
-  echo '---' job count test: PASS
+  echo '---' job count test: PASS >> $RESULT_FILE
 else
-  echo '---' map jobs ran incorrect number of times "($NT != 8)"
-  echo '---' job count test: FAIL
+  echo '---' map jobs ran incorrect number of times "($NT != 8)" >> $RESULT_FILE
+  echo '---' job count test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
@@ -240,7 +252,15 @@ sleep 1
 # start multiple workers.
 (maybe_quiet $TIMEOUT ../mrworker ../../mrapps/early_exit.so; touch $DF) &
 (maybe_quiet $TIMEOUT ../mrworker ../../mrapps/early_exit.so; touch $DF) &
-(maybe_quiet $TIMEOUT ../mrworker ../../mrapps/early_exit.so; touch $DF) &
+(maybe_quiet $TIMEOUT ../mrworker ../../mrapps/early--- wc test: PASS
+--- indexer test: PASS
+--- map parallelism test: PASS
+--- reduce parallelism test: PASS
+--- job count test: PASS
+--- early exit test: PASS
+--- crash test: PASS
+*** PASSED ALL TESTS
+_exit.so; touch $DF) &
 
 # wait for any of the coord or workers to exit.
 # `jobs` ensures that any completed old processes from other tests
@@ -272,10 +292,10 @@ wait
 sort mr-out* | grep . > mr-wc-all-final
 if cmp mr-wc-all-final mr-wc-all-initial
 then
-  echo '---' early exit test: PASS
+  echo '---' early exit test: PASS >> $RESULT_FILE
 else
-  echo '---' output changed after first worker exited
-  echo '---' early exit test: FAIL
+  echo '---' output changed after first worker exited >> $RESULT_FILE
+  echo '---' early exit test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 rm -f mr-*
@@ -322,17 +342,17 @@ rm $SOCKNAME
 sort mr-out* | grep . > mr-crash-all
 if cmp mr-crash-all mr-correct-crash.txt
 then
-  echo '---' crash test: PASS
+  echo '---' crash test: PASS >> $RESULT_FILE
 else
-  echo '---' crash output is not the same as mr-correct-crash.txt
-  echo '---' crash test: FAIL
+  echo '---' crash output is not the same as mr-correct-crash.txt >> $RESULT_FILE
+  echo '---' crash test: FAIL >> $RESULT_FILE
   failed_any=1
 fi
 
 #########################################################
 if [ $failed_any -eq 0 ]; then
-    echo '***' PASSED ALL TESTS
+    echo '***' PASSED ALL TESTS >> $RESULT_FILE
 else
-    echo '***' FAILED SOME TESTS
+    echo '***' FAILED SOME TESTS >> $RESULT_FILE
     exit 1
 fi
