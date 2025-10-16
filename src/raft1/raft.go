@@ -67,6 +67,14 @@ type Raft struct {
 	// reinitialized after election
 	NextIndex  []uint64
 	MatchIndex []uint64
+
+	// report applychannel
+	// 由make()方法传入的channel
+	// 向外部发送已提交的日志
+	applych chan raftapi.ApplyMsg
+
+	// 用于唤醒applier协程，当有新的log commit之后用它来发信号
+	applyCond *sync.Cond
 }
 
 // return currentTerm and whether this server
@@ -191,8 +199,10 @@ func (rf *Raft) RequestVote(args *RequestVoteArgs, reply *RequestVoteReply) {
 
 	// 检查log的up-to-date
 	// log长度和任期都要至少和me 一样大
+
 	logIndex := uint64(len(rf.Log) - 1)
 	logTerm := uint64(0)
+	log.Printf("server: %d checke the log", rf.me)
 	// [1...n]
 	if logIndex > 0 {
 		logTerm = rf.Log[logIndex].Term
@@ -273,6 +283,7 @@ type AppendEntriesReply struct {
 type LogEntry struct {
 	Command interface{} //raft只是安全管理物流包裹给KV服务器或是什么所以command是什么并不关心
 	Term    uint64
+	Index   int
 }
 
 func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply) {
@@ -299,28 +310,51 @@ func (rf *Raft) AppendEntries(args *AppendEntriesArgs, reply *AppendEntriesReply
 
 	// 收到心跳重置计时器
 	rf.resetTimer()
-	// log.Printf("Server %d timer reset because of heartbeat", rf.me)
+	log.Printf("Server %d timer reset because of heartbeat", rf.me)
 	// 一致性检查
+
 	lastindex := len(rf.Log) - 1
 
+	// 一致性检查
 	if args.PrevLogIndex > uint64(lastindex) {
+		// 【关键日志】打印出拒绝的原因
+		log.Printf("[Follower S%d] Consistency check FAILED: PrevLogIndex %d is out of bounds (my log len is %d)",
+			rf.me, args.PrevLogIndex, len(rf.Log))
 		reply.Success = false
 		return
 	}
 
-	if args.PrevLogTerm != rf.Log[args.PrevLogIndex].Term {
+	if rf.Log[args.PrevLogIndex].Term != args.PrevLogTerm {
+		log.Printf("[Follower S%d] Consistency check FAILED: Term mismatch at index %d (my term: %d, leader's term: %d)",
+			rf.me, args.PrevLogIndex, rf.Log[args.PrevLogIndex].Term, args.PrevLogTerm)
+
 		reply.Success = false
 		return
 	}
+
+	// if args.PrevLogIndex > uint64(lastindex) {
+	// 	reply.Success = false
+	// 	return
+	// }
+
+	// if args.PrevLogTerm != rf.Log[args.PrevLogIndex].Term {
+	// 	reply.Success = false
+	// 	return
+	// }
 
 	// 找到匹配日志先切片再追加
 	rf.Log = rf.Log[:args.PrevLogIndex+1] // s[:n]->s[0]...s[n-1]
 	rf.Log = append(rf.Log, args.Entries...)
 
+	log.Printf("[Follower S%d] Consistency check PASSED.", rf.me)
 	reply.Success = true
 
 	if args.LeaderCommit > rf.CommitIndex {
 		rf.CommitIndex = min(args.LeaderCommit, uint64(len(rf.Log)-1))
+
+		// 唤醒applier
+		// 当 commitIndex 前进时，唤醒自己的 applier 协程！
+		rf.applyCond.Signal()
 	}
 }
 
@@ -349,11 +383,43 @@ func (rf *Raft) resetTimer() {
 // term. the third return value is true if this server believes it is
 // the leader.
 func (rf *Raft) Start(command interface{}) (int, int, bool) {
+	// RAFT受到客户端指令然后追加到自己的日志中并向follower发送
 	index := -1
 	term := -1
 	isLeader := true
 
 	// Your code here (3B).
+
+	rf.mu.Lock()
+
+	// 检查是否是leader，只有leader才能进行操作
+	if rf.State != Leader {
+		isLeader = false
+		// log.Printf("server %d 不是leader 退出测试", rf.me)
+		rf.mu.Unlock()
+		return index, term, isLeader
+	}
+
+	// log.Printf("server %d 是leader 正常测试", rf.me)
+	index = len(rf.Log)
+	// 是leader的话打包收的命令
+	newLogEntry := LogEntry{
+		Command: command,
+		Term:    rf.CurrentTerm,
+		Index:   index,
+	}
+
+	// 添加到当前日志中
+	rf.Log = append(rf.Log, newLogEntry)
+
+	// 获取当前leader的日志索引
+	// 1-indexed
+	index = len(rf.Log) - 1
+	term = int(rf.CurrentTerm)
+
+	rf.mu.Unlock()
+
+	rf.BroadcastEntries()
 
 	return index, term, isLeader
 }
@@ -387,9 +453,11 @@ func (rf *Raft) ticker() {
 		state := rf.State
 		rf.mu.Unlock()
 
+		// log.Printf("[Server %d Term %d State %v ] wakeup", rf.me, rf.CurrentTerm, rf.State)
 		if state == Leader {
 			// leader 要定期向其它服务器发送heart beat
-			rf.sendHeartBeat()
+			// log.Printf("[Server %d Term %d State %v ] send heartbeat", rf.me, rf.CurrentTerm, rf.State)
+			rf.BroadcastEntries()
 			time.Sleep(HeartBeatInterval)
 		} else {
 			// 如果是follower那要检查上次收到心跳是什么时候有没有超过间隔
@@ -398,6 +466,7 @@ func (rf *Raft) ticker() {
 			rf.mu.Unlock()
 
 			if isTimeout {
+				// log.Printf("[Server %d Term %d] Election timer expired! State: %v -> Candidate", rf.me, rf.CurrentTerm, rf.State)
 				// 超时要发起选举
 				rf.AttemptElection()
 			}
@@ -411,7 +480,45 @@ func (rf *Raft) ticker() {
 	}
 }
 
-func (rf *Raft) sendHeartBeat() {
+func (rf *Raft) Applier() {
+	// 一直循环到服务器kill
+	for !rf.killed() {
+		rf.mu.Lock()
+
+		// 条件变量
+		for rf.CommitIndex <= rf.LastApplied {
+			// 如果没有新的已提交日志，就解锁并等待
+			// wait()会原子的解锁rf.mu并让协程睡眠
+			rf.applyCond.Wait()
+			// 被唤醒时，wait 重新锁定rf.mu
+		}
+
+		// 记录在解锁前需要应用的日志范围
+		lastApplied := rf.LastApplied
+		commitIndex := rf.CommitIndex
+
+		appliedEntries := make([]LogEntry, commitIndex-lastApplied)
+		copy(appliedEntries, rf.Log[lastApplied+1:commitIndex+1])
+
+		// 解锁之后让其他协程进行
+		rf.mu.Unlock()
+
+		// 把entries 发送到管道
+		for _, entry := range appliedEntries {
+			rf.applych <- raftapi.ApplyMsg{
+				CommandValid: true,
+				Command:      entry.Command,
+				CommandIndex: entry.Index,
+			}
+		}
+
+		rf.mu.Lock()
+		rf.LastApplied = commitIndex
+		rf.mu.Unlock()
+	}
+}
+
+func (rf *Raft) BroadcastEntries() {
 	rf.mu.Lock()
 
 	// 检查领导权
@@ -429,54 +536,113 @@ func (rf *Raft) sendHeartBeat() {
 		// heartbeat entries 为空
 
 		go func(serverIndex int) {
-			rf.mu.Lock()
-			reply := AppendEntriesReply{}
-			previndex := rf.NextIndex[serverIndex] - 1
-			prevterm := rf.Log[previndex].Term
-			args := AppendEntriesArgs{
-				Term:         rf.CurrentTerm,
-				LeaderID:     rf.me,
-				PrevLogIndex: previndex,
-				PrevLogTerm:  prevterm,
-				Entries:      nil,
-				LeaderCommit: rf.CommitIndex,
-			}
 
-			rf.mu.Unlock()
-			ok := rf.sendAppendEntries(serverIndex, &args, &reply)
+			for {
+				rf.mu.Lock()
+				// 检查领导权
+				if rf.State != Leader {
+					rf.mu.Unlock()
+					return
+				}
+				// 检查边界
+				if rf.NextIndex[serverIndex] < 1 {
+					rf.mu.Unlock()
+					return
+				}
+				previndex := rf.NextIndex[serverIndex] - 1
+				prevterm := rf.Log[previndex].Term
+				reply := AppendEntriesReply{}
+				args := AppendEntriesArgs{
+					Term:         rf.CurrentTerm,
+					LeaderID:     rf.me,
+					PrevLogIndex: previndex,
+					PrevLogTerm:  prevterm,
+					Entries:      rf.Log[rf.NextIndex[serverIndex]:],
+					LeaderCommit: rf.CommitIndex,
+				}
+				rf.mu.Unlock()
+				log.Printf("[Leader S%d T%d] -> S%d, Sending AppendEntries. Args: {PrevIdx:%d, PrevTerm:%d, #Entries:%d, LeaderCommit:%d}",
+					rf.me, args.Term, serverIndex, args.PrevLogIndex, args.PrevLogTerm, len(args.Entries), args.LeaderCommit)
+				ok := rf.sendAppendEntries(serverIndex, &args, &reply)
 
-			// 网络失败直接返回
-			if !ok {
-				return
-			}
+				// 网络失败直接返回
+				if !ok {
+					return
+				}
 
-			// 成功之后可能需要修改状态
-			rf.mu.Lock()
-			defer rf.mu.Unlock()
+				// 成功之后可能需要修改状态
+				rf.mu.Lock()
+				log.Printf("[Leader S%d T%d] <- S%d, Got AppendEntries Reply. Success: %v, ReplyTerm: %d",
+					rf.me, rf.CurrentTerm, serverIndex, reply.Success, reply.Term)
+				// 检查回复有没有超期,超期了直接返回
+				if args.Term != rf.CurrentTerm {
+					rf.mu.Unlock()
+					return
+				}
 
-			// 检查回复有没有超期,超期了直接返回
-			if args.Term != rf.CurrentTerm {
-				return
-			}
+				// 没有超期则进行检查
+				// 自己的任期过期
+				if reply.Term > rf.CurrentTerm {
+					rf.CurrentTerm = reply.Term
+					rf.State = Follower
+					rf.VotedFor = NotVoted
+					rf.mu.Unlock()
+					return
+				}
 
-			// 没有超期则进行检查
-			// 自己的任期过期
-			if reply.Term > rf.CurrentTerm {
-				rf.CurrentTerm = reply.Term
-				rf.State = Follower
-				rf.VotedFor = NotVoted
-				return
-			}
+				// 任期没过期，同步log同步点
+				if reply.Success {
+					rf.MatchIndex[serverIndex] = args.PrevLogIndex + uint64(len(args.Entries))
+					rf.NextIndex[serverIndex] = rf.MatchIndex[serverIndex] + 1
 
-			// 任期没过期，同步log同步点
-			if reply.Success {
-				rf.MatchIndex[serverIndex] = args.PrevLogIndex + uint64(len(args.Entries))
-				rf.NextIndex[serverIndex] = rf.MatchIndex[serverIndex] + 1
-			} else {
-				// 回退1个继续尝试
-				rf.NextIndex[serverIndex]--
+					// 收到成功回复就检查是否达到大多数
+					rf.updateCommitIndex()
+
+					rf.mu.Unlock()
+					return
+				} else {
+					// 回退1个继续尝试
+					rf.NextIndex[serverIndex]--
+					rf.mu.Unlock()
+					time.Sleep(10 * time.Millisecond)
+				}
 			}
 		}(i)
+	}
+}
+
+// 收到entry回复之后更新commitindex
+func (rf *Raft) updateCommitIndex() {
+	// 从commitIndex 开始检查log
+	for N := rf.CommitIndex + 1; N < uint64(len(rf.Log)); N++ {
+
+		// leader只能commit自己当前任期的日志
+		if rf.Log[N].Term != rf.CurrentTerm {
+			continue
+		}
+
+		// 统计有多少个节点复制了索引为N的日志
+		count := 1
+
+		for i := range rf.peers {
+			if i == rf.me {
+				continue
+			}
+
+			if rf.MatchIndex[i] >= N {
+				count++
+			}
+		}
+
+		if count >= rf.Majority {
+			// 更新commitindexid
+			rf.CommitIndex = N
+			log.Printf("[Leader S%d T%d] CommitIndex advanced to %d", rf.me, rf.CurrentTerm, rf.CommitIndex)
+			// 唤醒applier
+			rf.applyCond.Signal()
+		} else {
+			break
+		}
 	}
 }
 
@@ -547,15 +713,15 @@ func (rf *Raft) AttemptElection() {
 	}
 
 	rf.mu.Lock()
-	for voteSum <= rf.Majority && finished < len(rf.peers) {
+	for voteSum < rf.Majority && finished < len(rf.peers) {
 		condi.Wait()
 	}
 
-	if voteSum > rf.Majority {
+	if voteSum >= rf.Majority {
 		log.Printf("server %d become leader at term %d", rf.me, rf.CurrentTerm)
 		rf.BecomeLeader()
 		rf.mu.Unlock()
-		rf.sendHeartBeat()
+		rf.BroadcastEntries()
 		return
 	}
 	rf.mu.Unlock()
@@ -563,9 +729,8 @@ func (rf *Raft) AttemptElection() {
 
 func (rf *Raft) BecomeLeader() {
 	rf.State = Leader
-	lastLogIndex := len(rf.Log) - 1
 	for i := range rf.peers {
-		rf.NextIndex[i] = uint64(lastLogIndex) + 1
+		rf.NextIndex[i] = uint64(len(rf.Log))
 		rf.MatchIndex[i] = 0
 	}
 }
@@ -600,7 +765,7 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	rf.CommitIndex = 0
 	rf.LastApplied = 0
 	rf.State = Follower
-	rf.Majority = numServer / 2
+	rf.Majority = numServer/2 + 1
 
 	// volatile state on leader
 	rf.NextIndex = make([]uint64, numServer)
@@ -611,9 +776,17 @@ func Make(peers []*labrpc.ClientEnd, me int,
 	// initialize from state persisted before a crash
 	rf.readPersist(persister.ReadRaftState())
 
-	log.Printf("server initiated start to server!")
+	// 传入channel
+	rf.applych = applyCh
+	// 初始化条件变量
+	rf.applyCond = sync.NewCond(&rf.mu)
+
+	log.Printf("server %d initiated start to server!", rf.me)
 	// start ticker goroutine to start elections
 	go rf.ticker()
+
+	// 启动applier协程
+	go rf.Applier()
 
 	return rf
 }
