@@ -1,2 +1,2 @@
 # My_6.824
-personla implemetioned MIT6.824 project
+个人的6.824项目
