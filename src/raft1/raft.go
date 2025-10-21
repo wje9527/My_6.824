@@ -419,10 +419,11 @@ func (rf *Raft) InstallSnapShot(args *InstallSnapshotArgs, reply *InstallSnapsho
 
 // 发送snapshot
 func (rf *Raft) sendSnapShot(server int, args *InstallSnapshotArgs, reply *InstallSnapshotReply) {
-
+	rf.mu.Lock()
 	if rf.State != Leader {
 		return
 	}
+	rf.mu.Unlock()
 	// 发起rpc
 	ok := rf.peers[server].Call("Raft.InstallSnapShot", args, reply)
 
