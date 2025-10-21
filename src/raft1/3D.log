@@ -1,0 +1,480 @@
+Test (3D): snapshots basic (reliable network)...
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 1, matchIndex: 0 (计算得到 newMatch=0, newNext=1)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 1, matchIndex: 0 (计算得到 newMatch=0, newNext=1)
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 1, Term: 1
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 2, matchIndex: 1 (计算得到 newMatch=1, newNext=2)
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 2, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 3, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 4, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 5, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 6, Term: 1
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 7, matchIndex: 6 (计算得到 newMatch=6, newNext=7)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 7, matchIndex: 6 (计算得到 newMatch=6, newNext=7)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 7, matchIndex: 6 (计算得到 newMatch=6, newNext=7)
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 7, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 8, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 9, Term: 1
+2025/10/21 10:42:03 [START S2 T1] New entry added. New LastLogIndex: 10, Term: 1
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 10, matchIndex: 9 (计算得到 newMatch=9, newNext=10)
+2025/10/21 10:42:03 [S2 T1 SNAPSHOT] Index: 9, Term: 0. New log len: 11, New LastIncludedIndex: 0
+2025/10/21 10:42:03 [S2 T1 SNAPSHOT] Done. New log len: 2, New LastIncludedIndex: 9, New LastIncludedTerm: 1
+2025/10/21 10:42:03 [Sendsnap S2 T1] -> S0 | Preparing to send. nextIndex: 7, current lastLogIndex: 10
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=6, newNext=7)
+2025/10/21 10:42:03 [Sendsnap S2 T1] -> S0 | Preparing to send. nextIndex: 7, current lastLogIndex: 10
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S0 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [S1 T1 SNAPSHOT] Index: 9, Term: 0. New log len: 11, New LastIncludedIndex: 0
+2025/10/21 10:42:03 [S1 T1 SNAPSHOT] Done. New log len: 2, New LastIncludedIndex: 9, New LastIncludedTerm: 1
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=6, newNext=7)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:03 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:04 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:05 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:06 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:07 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:08 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:09 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:10 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:11 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:12 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功回复] 处理成功回复。
+2025/10/21 10:42:13 [Leader S2 T1 -> S1 成功更新后状态] nextIndex: 11, matchIndex: 10 (计算得到 newMatch=10, newNext=11)
+info: wrote visualization to /tmp/porcupine-925901039.html
+exit status 1
+FAIL	6.5840/raft1	10.725s
