@@ -7,6 +7,7 @@ const (
 	OK         = "OK"
 	ErrNoKey   = "ErrNoKey"
 	ErrVersion = "ErrVersion"
+	ErrTimeOut = "ErrTimeOut"
 
 	// Err returned by Clerk only
 	ErrMaybe = "ErrMaybe"
@@ -22,6 +23,9 @@ type PutArgs struct {
 	Key     string
 	Value   string
 	Version Tversion
+	// 用来对于重复请求去重
+	ClientId  int64
+	RequestId int
 }
 
 type PutReply struct {
@@ -30,6 +34,9 @@ type PutReply struct {
 
 type GetArgs struct {
 	Key string
+	// 用来标记请求和发送者
+	ClientId  int64
+	RequestId int
 }
 
 type GetReply struct {
@@ -37,4 +44,3 @@ type GetReply struct {
 	Version Tversion
 	Err     Err
 }
-

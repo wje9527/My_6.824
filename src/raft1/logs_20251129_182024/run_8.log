@@ -1,0 +1,114 @@
+=== RUN   TestInitialElection3A
+Test (3A): initial election (reliable network)...
+  ... Passed --  time  3.1s #peers 3 #RPCs   114 #Ops    0
+--- PASS: TestInitialElection3A (3.07s)
+=== RUN   TestReElection3A
+Test (3A): election after network failure (reliable network)...
+  ... Passed --  time  7.5s #peers 3 #RPCs   324 #Ops    0
+--- PASS: TestReElection3A (7.52s)
+=== RUN   TestManyElections3A
+Test (3A): multiple elections (reliable network)...
+  ... Passed --  time  5.5s #peers 7 #RPCs   846 #Ops    0
+--- PASS: TestManyElections3A (5.46s)
+=== RUN   TestBasicAgree3B
+Test (3B): basic agreement (reliable network)...
+  ... Passed --  time  0.5s #peers 3 #RPCs    18 #Ops    0
+--- PASS: TestBasicAgree3B (0.50s)
+=== RUN   TestRPCBytes3B
+Test (3B): RPC byte count (reliable network)...
+  ... Passed --  time  0.9s #peers 3 #RPCs    50 #Ops    0
+--- PASS: TestRPCBytes3B (0.88s)
+=== RUN   TestFollowerFailure3B
+Test (3B): test progressive failure of followers (reliable network)...
+  ... Passed --  time  4.5s #peers 3 #RPCs   180 #Ops    0
+--- PASS: TestFollowerFailure3B (4.49s)
+=== RUN   TestLeaderFailure3B
+Test (3B): test failure of leaders (reliable network)...
+  ... Passed --  time  9.3s #peers 3 #RPCs   518 #Ops    0
+--- PASS: TestLeaderFailure3B (9.29s)
+=== RUN   TestFailAgree3B
+Test (3B): agreement after follower reconnects (reliable network)...
+  ... Passed --  time  5.3s #peers 3 #RPCs   218 #Ops    0
+--- PASS: TestFailAgree3B (5.28s)
+=== RUN   TestFailNoAgree3B
+Test (3B): no agreement if too many followers disconnect (reliable network)...
+  ... Passed --  time  3.4s #peers 5 #RPCs   288 #Ops    0
+--- PASS: TestFailNoAgree3B (3.40s)
+=== RUN   TestConcurrentStarts3B
+Test (3B): concurrent Start()s (reliable network)...
+  ... Passed --  time  0.5s #peers 3 #RPCs    24 #Ops    0
+--- PASS: TestConcurrentStarts3B (0.53s)
+=== RUN   TestRejoin3B
+Test (3B): rejoin of partitioned leader (reliable network)...
+  ... Passed --  time  4.0s #peers 3 #RPCs   262 #Ops    0
+--- PASS: TestRejoin3B (4.03s)
+=== RUN   TestBackup3B
+Test (3B): leader backs up quickly over incorrect follower logs (reliable network)...
+  ... Passed --  time 17.0s #peers 5 #RPCs  2684 #Ops    0
+--- PASS: TestBackup3B (17.05s)
+=== RUN   TestCount3B
+Test (3B): RPC counts aren't too high (reliable network)...
+  ... Passed --  time  2.0s #peers 3 #RPCs    94 #Ops    0
+--- PASS: TestCount3B (1.99s)
+=== RUN   TestPersist13C
+Test (3C): basic persistence (reliable network)...
+  ... Passed --  time  3.3s #peers 3 #RPCs   110 #Ops    0
+--- PASS: TestPersist13C (3.32s)
+=== RUN   TestPersist23C
+Test (3C): more persistence (reliable network)...
+  ... Passed --  time 28.5s #peers 5 #RPCs   472 #Ops    0
+--- PASS: TestPersist23C (28.51s)
+=== RUN   TestPersist33C
+Test (3C): partitioned leader and one follower crash, leader restarts (reliable network)...
+  ... Passed --  time  1.5s #peers 3 #RPCs    48 #Ops    0
+--- PASS: TestPersist33C (1.54s)
+=== RUN   TestFigure83C
+Test (3C): Figure 8 (reliable network)...
+  ... Passed --  time 33.4s #peers 5 #RPCs   996 #Ops    0
+--- PASS: TestFigure83C (33.45s)
+=== RUN   TestUnreliableAgree3C
+Test (3C): unreliable agreement (unreliable network)...
+  ... Passed --  time  1.4s #peers 5 #RPCs  1080 #Ops    0
+--- PASS: TestUnreliableAgree3C (1.44s)
+=== RUN   TestFigure8Unreliable3C
+Test (3C): Figure 8 (unreliable) (unreliable network)...
+  ... Passed --  time 36.5s #peers 5 #RPCs 11668 #Ops    0
+--- PASS: TestFigure8Unreliable3C (36.48s)
+=== RUN   TestReliableChurn3C
+Test (3C): churn (reliable network)...
+  ... Passed --  time 16.4s #peers 5 #RPCs  7252 #Ops    0
+--- PASS: TestReliableChurn3C (16.46s)
+=== RUN   TestUnreliableChurn3C
+Test (3C): unreliable churn (unreliable network)...
+  ... Passed --  time 16.5s #peers 5 #RPCs  3856 #Ops    0
+--- PASS: TestUnreliableChurn3C (16.49s)
+=== RUN   TestSnapshotBasic3D
+Test (3D): snapshots basic (reliable network)...
+  ... Passed --  time  2.0s #peers 3 #RPCs   528 #Ops    0
+--- PASS: TestSnapshotBasic3D (1.98s)
+=== RUN   TestSnapshotInstall3D
+Test (3D): install snapshots (disconnect) (reliable network)...
+  ... Passed --  time 34.5s #peers 3 #RPCs  2070 #Ops    0
+--- PASS: TestSnapshotInstall3D (34.48s)
+=== RUN   TestSnapshotInstallUnreliable3D
+Test (3D): install snapshots (disconnect) (unreliable network)...
+  ... Passed --  time 45.6s #peers 3 #RPCs  2578 #Ops    0
+--- PASS: TestSnapshotInstallUnreliable3D (45.57s)
+=== RUN   TestSnapshotInstallCrash3D
+Test (3D): install snapshots (crash) (reliable network)...
+  ... Passed --  time 23.2s #peers 3 #RPCs  1504 #Ops    0
+--- PASS: TestSnapshotInstallCrash3D (23.16s)
+=== RUN   TestSnapshotInstallUnCrash3D
+Test (3D): install snapshots (crash) (unreliable network)...
+  ... Passed --  time 36.6s #peers 3 #RPCs  1704 #Ops    0
+--- PASS: TestSnapshotInstallUnCrash3D (36.58s)
+=== RUN   TestSnapshotAllCrash3D
+Test (3D): crash and restart all servers (unreliable network)...
+  ... Passed --  time  7.2s #peers 3 #RPCs   338 #Ops    0
+--- PASS: TestSnapshotAllCrash3D (7.20s)
+=== RUN   TestSnapshotInit3D
+Test (3D): snapshot initialization after crash (unreliable network)...
+  ... Passed --  time  2.1s #peers 3 #RPCs    82 #Ops    0
+--- PASS: TestSnapshotInit3D (2.09s)
+PASS
+ok  	6.5840/raft1	353.300s

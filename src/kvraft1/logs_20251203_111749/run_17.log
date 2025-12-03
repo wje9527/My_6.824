@@ -1,0 +1,58 @@
+=== RUN   TestBasic4B
+Test: one client (4B basic) (reliable network)...
+  ... Passed --  time  3.1s #peers 5 #RPCs  3279 #Ops  349
+--- PASS: TestBasic4B (3.07s)
+=== RUN   TestSpeed4B
+Test: one client (4B speed) (reliable network)...
+  ... Passed --  time 28.9s #peers 3 #RPCs  5140 #Ops    0
+--- PASS: TestSpeed4B (28.97s)
+=== RUN   TestConcurrent4B
+Test: many clients (4B many clients) (reliable network)...
+  ... Passed --  time  3.7s #peers 5 #RPCs  6321 #Ops  439
+--- PASS: TestConcurrent4B (3.66s)
+=== RUN   TestUnreliable4B
+Test: many clients (4B many clients) (unreliable network)...
+  ... Passed --  time  4.5s #peers 5 #RPCs  2008 #Ops  255
+--- PASS: TestUnreliable4B (4.54s)
+=== RUN   TestOnePartition4B
+Test: one client (4B progress in majority) (unreliable network)...
+  ... Passed --  time  2.2s #peers 5 #RPCs   241 #Ops    3
+Test: no progress in minority (4B) (unreliable network)...
+  ... Passed --  time  1.2s #peers 5 #RPCs   230 #Ops    3
+Test: completion after heal (4B) (unreliable network)...
+  ... Passed --  time  1.1s #peers 5 #RPCs   119 #Ops    4
+--- PASS: TestOnePartition4B (4.48s)
+=== RUN   TestManyPartitionsOneClient4B
+Test: partitions, one client (4B partitions, one client) (reliable network)...
+  ... Passed --  time  9.4s #peers 5 #RPCs  3674 #Ops  363
+--- PASS: TestManyPartitionsOneClient4B (9.38s)
+=== RUN   TestManyPartitionsManyClients4B
+Test: partitions, many clients (4B partitions, many clients (4B)) (reliable network)...
+  ... Passed --  time 14.8s #peers 5 #RPCs  8204 #Ops  459
+--- PASS: TestManyPartitionsManyClients4B (14.77s)
+=== RUN   TestPersistOneClient4B
+Test: restarts, one client (4B restarts, one client 4B ) (reliable network)...
+  ... Passed --  time  6.1s #peers 5 #RPCs  4986 #Ops  301
+--- PASS: TestPersistOneClient4B (6.11s)
+=== RUN   TestPersistConcurrent4B
+Test: restarts, many clients (4B restarts, many clients) (reliable network)...
+  ... Passed --  time  6.6s #peers 5 #RPCs 15212 #Ops  377
+--- PASS: TestPersistConcurrent4B (6.62s)
+=== RUN   TestPersistConcurrentUnreliable4B
+Test: restarts, many clients (4B restarts, many clients ) (unreliable network)...
+  ... Passed --  time  7.4s #peers 5 #RPCs  1325 #Ops  105
+--- PASS: TestPersistConcurrentUnreliable4B (7.44s)
+=== RUN   TestPersistPartition4B
+Test: restarts, partitions, many clients (4B restarts, partitions, many clients) (reliable network)...
+  ... Passed --  time 13.8s #peers 5 #RPCs 16494 #Ops  397
+--- PASS: TestPersistPartition4B (13.78s)
+=== RUN   TestPersistPartitionUnreliable4B
+Test: restarts, partitions, many clients (4B restarts, partitions, many clients) (unreliable network)...
+  ... Passed --  time 14.7s #peers 5 #RPCs  2488 #Ops  183
+--- PASS: TestPersistPartitionUnreliable4B (14.69s)
+=== RUN   TestPersistPartitionUnreliableLinearizable4B
+Test: restarts, partitions, random keys, many clients (4B restarts, partitions, random keys, many clients) (unreliable network)...
+  ... Passed --  time 17.1s #peers 7 #RPCs  5927 #Ops  274
+--- PASS: TestPersistPartitionUnreliableLinearizable4B (17.14s)
+PASS
+ok  	6.5840/kvraft1	135.705s
