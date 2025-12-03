@@ -795,6 +795,7 @@ func (rf *Raft) Kill() {
 
 	// kill applier
 	rf.mu.Lock()
+	// close(rf.applych)
 	rf.applyCond.Broadcast()
 	rf.mu.Unlock()
 }
@@ -899,6 +900,7 @@ func (rf *Raft) Applier() {
 				rf.applych <- raftapi.ApplyMsg{
 					CommandValid: true,
 					Command:      entry.Command,
+					CommandTerm:  entry.Term,
 					CommandIndex: entry.Index,
 				}
 			}
@@ -908,6 +910,7 @@ func (rf *Raft) Applier() {
 			rf.mu.Unlock()
 		}
 	}
+	close(rf.applych)
 }
 
 func (rf *Raft) BroadcastEntries() {
@@ -1055,41 +1058,6 @@ func (rf *Raft) BroadcastEntries() {
 				}
 				rf.mu.Unlock()
 
-				// Follower 有冲突任期 XTerm，其第一个索引是 XIndex
-
-				// 尝试在 Leader 的日志中查找任期为 XTerm 的【最后一条】日志
-				// lastLog := rf.GetLastLog()
-				// leaderLastIndexWithXTerm := -1 // 初始化为未找到
-
-				// 从 Leader 当前日志的末尾向前查找 (使用逻辑索引)
-				// 查找范围应该从 PrevLogIndex (导致失败的位置) 向前，直到快照点之后
-				// 但为了简单和覆盖所有情况，可以直接从 Leader 的最后日志向前找
-				// for logicalIndex := lastLog.Index; logicalIndex > rf.LastIncludedIndex; logicalIndex-- {
-				// 	entry, ok := rf.GetLogEntry(logicalIndex)
-				// 	if ok && entry.Term == reply.XTerm {
-				// 		// 找到了 Leader 日志中 XTerm 的最后一条日志
-				// 		leaderLastIndexWithXTerm = logicalIndex
-				// 		break
-				// 	}
-				// 	// 如果 entry.Term < reply.XTerm，说明再往前找也不会有 XTerm 了，可以提前退出优化
-				// 	if ok && entry.Term < reply.XTerm {
-				// 		break
-				// 	}
-				// }
-
-				// if leaderLastIndexWithXTerm != -1 {
-				// 	// Leader 在自己的日志中找到了 XTerm，
-				// 	// 将 nextIndex 设置为 Leader 中该 Term 最后一条日志的【下一条】
-				// 	rf.NextIndex[serverIndex] = leaderLastIndexWithXTerm + 1
-				// } else {
-				// 	// Leader 的日志中没有 XTerm (或者 XTerm 只存在于快照中)
-				// 	// 将 nextIndex 直接设置为 Follower 冲突任期的【第一个】索引
-				// 	rf.NextIndex[serverIndex] = reply.XIndex
-				// }
-				// // 【健壮性检查】: 确保 nextIndex 至少为 1 (或 LastIncludedIndex + 1)
-				// if rf.NextIndex[serverIndex] <= rf.LastIncludedIndex {
-				// 	rf.NextIndex[serverIndex] = rf.LastIncludedIndex + 1
-				// }
 				time.Sleep(10 * time.Millisecond)
 			}
 			// }
@@ -1143,45 +1111,67 @@ func (rf *Raft) AttemptElection() {
 	rf.CurrentTerm++
 	rf.VotedFor = rf.me
 	voteSum := 1
-	finished := 1
+	// finished := 1
 	// log.Printf("server %d attempt to election at term %d", rf.me, rf.CurrentTerm)
+	currentTerm := rf.CurrentTerm
+	lastLog := rf.GetLastLog()
+	args := RequestVoteArgs{
+		Term:         currentTerm,
+		CandidateID:  rf.me,
+		LastLogIndex: lastLog.Index,
+		LastLogTerm:  lastLog.Term,
+	}
 	// 启动选举之后重置自己的选举计时器
 	rf.resetTimer()
 	// 发起选举后持久化
 	rf.persist()
 	rf.mu.Unlock()
-	condi := sync.NewCond(&rf.mu)
+	// condi := sync.NewCond(&rf.mu)
 	// 向大家发送投票请求
 	for i := range rf.peers {
-		if i == rf.me {
+		if i == rf.me { // rf.mu.Lock()
+			// for voteSum < rf.Majority && finished < len(rf.peers) {
+			// 	condi.Wait()
+			// }
+
+			// if voteSum >= rf.Majority {
+			// 	// log.Printf("server %d become leader at term %d", rf.me, rf.CurrentTerm)
+			// 	rf.BecomeLeader()
+			// 	rf.mu.Unlock()
+			// 	rf.BroadcastEntries()
+			// 	return
+			// }
+			// rf.mu.Unlock()
 			continue
 		}
 
 		go func(serverIndex int) {
-			rf.mu.Lock()
-			lastlog := rf.GetLastLog()
-			args := RequestVoteArgs{
-				Term:         rf.CurrentTerm,
-				CandidateID:  rf.me,
-				LastLogIndex: lastlog.Index,
-				LastLogTerm:  lastlog.Term,
-			}
+			// rf.mu.Lock()
+			// lastlog := rf.GetLastLog()
+			// args := RequestVoteArgs{
+			// 	Term:         rf.CurrentTerm,
+			// 	CandidateID:  rf.me,
+			// 	LastLogIndex: lastlog.Index,
+			// 	LastLogTerm:  lastlog.Term,
+			// }
 			var reply RequestVoteReply
-			rf.mu.Unlock()
+			// rf.mu.Unlock()
 			ok := rf.sendRequestVote(serverIndex, &args, &reply)
 			rf.mu.Lock()
-			defer rf.mu.Unlock()
+			// defer rf.mu.Unlock()
 			// 网络问题直接返回
 			if !ok {
-				finished++
-				condi.Broadcast()
+				// finished++
+				// condi.Broadcast()
+				rf.mu.Unlock()
 				return
 			}
 
 			// 确保自己仍是condidate并且任期没变
 			if rf.State != Candidate || rf.CurrentTerm != args.Term {
-				finished++
-				condi.Broadcast()
+				// finished++
+				// condi.Broadcast()
+				rf.mu.Unlock()
 				return
 			}
 
@@ -1189,34 +1179,42 @@ func (rf *Raft) AttemptElection() {
 			if reply.Term > rf.CurrentTerm {
 				rf.State = Follower
 				rf.CurrentTerm = reply.Term
-				finished++
+				// finished++
 				rf.persist()
-				condi.Broadcast()
+				// condi.Broadcast()
+				rf.mu.Unlock()
 				return
 			}
 
 			// 统计票数
 			if reply.VoteGrabted {
 				voteSum++
+				if voteSum >= rf.Majority && rf.State == Candidate {
+					rf.BecomeLeader()
+					rf.mu.Unlock()
+					rf.BroadcastEntries()
+					return
+				}
 			}
-			finished++
-			condi.Broadcast()
+			// finished++
+			// condi.Broadcast()
+			rf.mu.Unlock()
 		}(i)
 	}
 
-	rf.mu.Lock()
-	for voteSum < rf.Majority && finished < len(rf.peers) {
-		condi.Wait()
-	}
+	// rf.mu.Lock()
+	// for voteSum < rf.Majority && finished < len(rf.peers) {
+	// 	condi.Wait()
+	// }
 
-	if voteSum >= rf.Majority {
-		// log.Printf("server %d become leader at term %d", rf.me, rf.CurrentTerm)
-		rf.BecomeLeader()
-		rf.mu.Unlock()
-		rf.BroadcastEntries()
-		return
-	}
-	rf.mu.Unlock()
+	// if voteSum >= rf.Majority {
+	// 	// log.Printf("server %d become leader at term %d", rf.me, rf.CurrentTerm)
+	// 	rf.BecomeLeader()
+	// 	rf.mu.Unlock()
+	// 	rf.BroadcastEntries()
+	// 	return
+	// }
+	// rf.mu.Unlock()
 }
 
 func (rf *Raft) BecomeLeader() {

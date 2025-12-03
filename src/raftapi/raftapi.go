@@ -30,6 +30,7 @@ type Raft interface {
 type ApplyMsg struct {
 	CommandValid bool
 	Command      interface{}
+	CommandTerm  int
 	CommandIndex int
 
 	SnapshotValid bool
